@@ -30,9 +30,28 @@ ___
 
 ```
 
-## Add a jukebox to your scene:
+## Add a default jukebox to your scene:
 ```
 <a-jukebox position="0 1.7 -1.5"></a-jukebox>        
+        
+<a-entity id="rig" position="0 0 0">
+  <a-camera id="camera" look-controls="pointerLockEnabled: true;" >
+    <a-cursor material="color:#3AC4D1" 
+              fuse:true
+              position="0 0 -0.6"
+              raycaster="objects: .jukebox">
+    </a-cursor>
+  </a-camera>
+</a-entity> 
+
+```
+
+## Add a custom jukebox to your scene:
+```
+<a-jukebox 
+songs=" 'Love Theme from\nthe Godfather' , 'Cannon in D\nby Bach'   "
+tracks='14837098 , 4595620'
+position="0 1.7 -1.5"></a-jukebox>        
         
 <a-entity id="rig" position="0 0 0">
   <a-camera id="camera" look-controls="pointerLockEnabled: true;" >
