@@ -1,3 +1,5 @@
+![A-Frame Jukebox](https://cdn.glitch.com/b88fe5ca-4161-4b19-865e-cfabdd398fa7%2Fa-jukebox.gif?v=1565990879454)
+
 # A-Frame Jukebox
 ____
 
