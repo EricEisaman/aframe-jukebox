@@ -24,7 +24,7 @@ ___
 - The custom color theme property has not yet been implemented.
 ```
 
-## Add the component in the HTML head:
+## Add the A-Frame Jukebox script in the HTML head:
 ```
 <script src="https://cdn.jsdelivr.net/gh/EricEisaman/aframe-jukebox/dist/aframe-jukebox.min.js" ></script>
 
