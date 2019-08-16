@@ -1,10 +1,7 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-  "name": "my-glitch-app",
-  "version": "0.0.1",
-  "description": "What am I about?",
+  "name": "A-Frame Jukebox",
+  "version": "0.1.0",
+  "description": "Bring music to VR!",
   "main": "server.js",
   "scripts": {
     "start": "rollup -c -i src/main.js -o .data/bundle.js; node server.js"
