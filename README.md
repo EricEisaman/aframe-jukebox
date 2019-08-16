@@ -3,6 +3,27 @@
 # A-Frame Jukebox
 ____
 
+**API**
+
+|Property|Type|Description|Default Value| 
+|---|---|---|---|
+|songs|array|names of songs|" 'Don\'t You Worry Bout a Thing\nby Jacob Collier' , 'Fireflies by Owl City' , 'In the Name of Love\nby Martin Garrix' , 'Save Me\n by the Underground All Stars' , 'Riders on the Storm\nby the Doors' "|
+|tracks|array|track numbers of songs|'159735657 , 5988210 , 319594726 , 9645925 , 219569230'|
+|logo|string|logo|'https://cdn.glitch.com/b88fe5ca-4161-4b19-865e-cfabdd398fa7%2Faj_logo.png?v=1565976468386'|
+|color|string|closed rotation (for rotate type)|'#D3FFE7'|
+|playthrough|boolean|play through all tracks|true|
+|initialdelay|number|milliseconds before start|5000|
+
+
+___
+
+**Important Notes**
+
+**Note:**
+```diff
+- The custom color theme property has not yet been implemented.
+```
+
 ## Add the component in the HTML head:
 ```
 <script src="https://cdn.jsdelivr.net/gh/EricEisaman/aframe-jukebox/dist/aframe-jukebox.min.js" ></script>
