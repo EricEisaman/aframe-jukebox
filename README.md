@@ -5,7 +5,7 @@ ____
 
 ## Add the component in the HTML head:
 ```
-<script src="bundle.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/EricEisaman/aframe-jukebox/dist/aframe-jukebox.min.js" ></script>
 
 ```
 
