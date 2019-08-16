@@ -7,7 +7,8 @@ import builtins from 'rollup-plugin-node-builtins';
 import { terser } from "rollup-plugin-terser";
 
 export default {
-	output: {
+  input: 'src/main.js',
+	output: { 
 	  format: 'iife'
   },
 	sourcemap: 'public/',
@@ -23,9 +24,6 @@ export default {
       		extensions: [ '.js' ],  // Default: ['.js']
 		}),
 		builtins(),
-		commonjs({
-      		include: 'node_modules/**',
-		}),
     terser() // Code minification
 	]
 };

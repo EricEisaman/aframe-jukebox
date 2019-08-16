@@ -10,7 +10,7 @@
     "start": "rollup -c -i src/main.js -o .data/bundle.js; node server.js"
   },
   "dependencies": {
-    "rollup": "^0.50.0",
+    "rollup": "^1.0.4",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^2.0.1",
     "rollup-plugin-node-builtins": "^2.1.2",
