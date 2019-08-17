@@ -46,7 +46,7 @@ AFRAME.registerComponent('jukebox', {
   nextSongBtn.zIndex = 100;
   nextSongBtn.style.display = "none";
   nextSongBtn.addEventListener('click',e=>{
-    AFRAME.jukebox.playNext();
+    window.CS1.jukebox.playNext();
   });
   let ui = document.createElement('div');
   ui.style.margin = '0 auto';
@@ -59,7 +59,7 @@ AFRAME.registerComponent('jukebox', {
   if(bgm.playThrough){
    audio.addEventListener('ended',e=>{
     console.log('bgm song ended');
-    AFRAME.jukebox.playNext();
+    window.CS1.jukebox.playNext();
    });
 }
 
@@ -67,7 +67,7 @@ AFRAME.registerComponent('jukebox', {
   
 let currentSongIndex = 0;
   
-window.AFRAME.jukebox = {
+window.CS1.jukebox = {
     audio: audio,
     tracks: tracks,
     play: (trackIndex=false)=>{
@@ -95,10 +95,10 @@ window.AFRAME.jukebox = {
       nowPlaying.innerText = bgm.songNames[currentSongIndex];
     },
     
-  }//end of AFRAME.jukebox definition
+  }//end of CS1.jukebox definition
   
    setTimeout(function(){
-     AFRAME.jukebox.play();
+     window.CS1.jukebox.play();
    },bgm.initialDelay);
 
 
@@ -126,7 +126,7 @@ bgm.songs.forEach(  (song,index)=>{
   songItem.addEventListener('click',e=>{
     console.log(`Play ${bgm.songNames[index]}.`);
     bgmUI.components.sound__clickclick.playSound();
-    AFRAME.jukebox.play(index);
+    window.CS1.jukebox.play(index);
     nowPlaying.innerText = bgm.songNames[index];
   });
   songItem.addEventListener('mouseenter',e=>{
