@@ -19,7 +19,8 @@ AFRAME.registerComponent('jukebox', {
     logo: {default: 'https://cdn.glitch.com/b88fe5ca-4161-4b19-865e-cfabdd398fa7%2Faj_logo.png?v=1565976468386'},
     color: {default: '#3AC4D1'},
     playthrough: {default: true},
-    initialdelay: {default: 5000}
+    initialdelay: {default: 5000},
+    autoplay:{default:false}
   },
    
   init: function(){
@@ -78,6 +79,7 @@ window.CS1.jukebox = {
         audio.src = bgmUrlStart + tracks[trackIndex] + bgmUrlEnd;
         audio.crossorigin = 'anonymous';
         audio.load();
+        currentSongIndex = trackIndex;
         if(bgm.playThrough) audio.loop = false;
       }
       audio.volume = bgm.volume;
@@ -99,6 +101,7 @@ window.CS1.jukebox = {
     
   }//end of CS1.jukebox definition
   
+   if(this.data.autoplay) 
    setTimeout(function(){
      window.CS1.jukebox.play();
    },bgm.initialDelay);
@@ -117,7 +120,14 @@ layout.logo.style.marginTop = '-30px';
 
 
 const nowPlaying = layout.current;
-nowPlaying.innerText = this.data.songNames[0];
+const heading = layout.heading;
+if(this.data.autoplay){
+  heading.innerText = 'Now Playing';
+  nowPlaying.innerText = this.data.songNames[0];
+}else{
+  heading.innerText = 'Choose a Track';
+  nowPlaying.innerText = '';
+} 
 
 const playlist = document.createElement('div');
 playlist.setAttribute('style','text-align:center;margin-left:0.0em;margin-top:1.0em');
@@ -128,8 +138,15 @@ bgm.songs.forEach(  (song,index)=>{
   songItem.addEventListener('click',e=>{
     console.log(`Play ${bgm.songNames[index]}.`);
     bgmUI.components.sound__clickclick.playSound();
-    window.CS1.jukebox.play(index);
-    nowPlaying.innerText = bgm.songNames[index];
+    if(nowPlaying.innerText == (bgm.songNames[index]).replace('\n','')){
+      window.CS1.jukebox.pause();
+       heading.innerText = 'Choose a Track';
+      nowPlaying.innerText = '';
+    }else{
+      window.CS1.jukebox.play(index);
+      heading.innerText = 'Now Playing';
+      nowPlaying.innerText = bgm.songNames[index];  
+    } 
   });
   songItem.addEventListener('mouseenter',e=>{
     bgmUI.components.sound__hoverclick.playSound();
