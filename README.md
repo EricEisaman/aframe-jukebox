@@ -13,7 +13,7 @@ ____
 |color|string|closed rotation (for rotate type)|'#D3FFE7'|
 |playthrough|boolean|play through all tracks|true|
 |initialdelay|number|milliseconds before start|5000|
-
+|autoplay|boolean|autoplay setting|false|
 
 ___
 

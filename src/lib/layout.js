@@ -1,11 +1,3 @@
-/*
-API
-layout.ui
-layout.player
-layout.logo
-layout.nowPlaying
-*/
-
 const layout = { };
 
 const np = document.createElement('div');
@@ -36,15 +28,9 @@ ui.appendChild(p);
 layout.ui = ui;
 layout.player = p;
 layout.logo = logo;
+layout.heading = heading;
 layout.current = title;
 
 export default layout;
 
-
-// #now-playing {
-//   margin-top: -30px;
-//   font-size:10px;
-//   text-align:center;
-//   color:#58E7F4;
-// }
 
