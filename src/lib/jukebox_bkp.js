@@ -119,10 +119,10 @@ layout.logo.style.marginTop = '-30px';
 const nowPlaying = layout.current;
 nowPlaying.innerText = this.data.songNames[0];
 
-const playlist = document.createElement('div');
-playlist.setAttribute('style','text-align:center;margin-left:0.0em;margin-top:1.0em');
+const playlist = document.createElement('ul');
+playlist.setAttribute('style','text-align:center;margin-left:-2.5em;margin-top:3.0em');
 bgm.songs.forEach(  (song,index)=>{
-  const songItem = document.createElement('div');
+  const songItem = document.createElement('li');
   songItem.innerText = bgm.songNames[index];
   songItem.setAttribute('style','color:#FFF;font-size:12px');
   songItem.addEventListener('click',e=>{
