@@ -3,6 +3,8 @@ import htmlembed from './htmlembed.js';
 import layout from './layout.js'; 
 
 const AFRAME = window.AFRAME;
+
+if(!window.CS1)window.CS1={};
   
 export default (function () {
 
