@@ -30,8 +30,8 @@ AFRAME.registerComponent('jukebox', {
         "songs": this.data.trackNums,   // add your tracks in this array.
         "songNames": this.data.songNames,
         "volume": 0.2,
-        "playThrough": true,  // true means loop through all tracks in array
-        "initialDelay": 5000
+        "playThrough": this.data.playthrough,  // true means loop through all tracks in array
+        "initialDelay": this.data.initialdelay
   } 
 
   let tracks = bgm.songs;
@@ -73,20 +73,34 @@ let currentSongIndex = 0;
 window.CS1.jukebox = {
     audio: audio,
     tracks: tracks,
-    play: (trackIndex=false)=>{
+    play: (trackIndex=false,local=true)=>{
       if(trackIndex || trackIndex===0){
-        console.log(`Playing track index: ${trackIndex}.`);
+        //console.log(`Playing track index: ${trackIndex}.`);
         audio.src = bgmUrlStart + tracks[trackIndex] + bgmUrlEnd;
         audio.crossorigin = 'anonymous';
         audio.load();
         currentSongIndex = trackIndex;
+        if(local){
+          console.log('emitting jukeboxplay event');
+          const jukeboxplayEvent = new CustomEvent('jukeboxplay', { 
+            detail: {
+              index: trackIndex
+            } 
+          });
+          audio.dispatchEvent(jukeboxplayEvent);
+        }
         if(bgm.playThrough) audio.loop = false;
       }
       audio.volume = bgm.volume;
       audio.play();
     },
-    pause: ()=>{
+    pause: (local=true)=>{
       audio.pause();
+      if(local){
+        console.log('emitting jukeboxpause event');
+        const jukeboxpauseEvent = new Event('jukeboxpause');
+        audio.dispatchEvent(jukeboxpauseEvent);  
+      }  
     },
     playNext: ()=>{
       currentSongIndex++;
@@ -136,7 +150,7 @@ bgm.songs.forEach(  (song,index)=>{
   songItem.innerText = bgm.songNames[index];
   songItem.setAttribute('style','color:#FFF;font-size:12px');
   songItem.addEventListener('click',e=>{
-    console.log(`Play ${bgm.songNames[index]}.`);
+    //console.log(`Play ${bgm.songNames[index]}.`);
     bgmUI.components.sound__clickclick.playSound();
     if(nowPlaying.innerText == (bgm.songNames[index]).replace('\n','')){
       window.CS1.jukebox.pause();
