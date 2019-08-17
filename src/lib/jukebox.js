@@ -67,7 +67,7 @@ AFRAME.registerComponent('jukebox', {
   
 let currentSongIndex = 0;
   
-  AFRAME.jukebox = {
+window.AFRAME.jukebox = {
     audio: audio,
     tracks: tracks,
     play: (trackIndex=false)=>{
