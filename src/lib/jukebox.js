@@ -139,23 +139,6 @@ window.CS1.jukebox = {
     playNext: playNext  
   }//end of CS1.jukebox definition
     
- 
-/*
-e=>{
-    //console.log(`Play ${bgm.songNames[index]}.`);
-    bgmUI.components.sound__clickclick.playSound();
-    if(nowPlaying.innerText == (bgm.songNames[index]).replace('\n','')){
-      window.CS1.jukebox.pause(true);
-       heading.innerText = 'Choose a Track';
-      nowPlaying.innerText = '';
-    }else{
-      window.CS1.jukebox.play(index,true);
-      heading.innerText = 'Now Playing';
-      nowPlaying.innerText = bgm.songNames[index];  
-    } 
-  }
-  
-*/
   
 if(this.data.autoplay)setTimeout(function(){window.CS1.jukebox.play();},bgm.initialDelay);
 
