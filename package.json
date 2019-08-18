@@ -1,6 +1,6 @@
 {
   "name": "A-Frame Jukebox",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Bring music to VR!",
   "main": "server.js",
   "scripts": {
