@@ -67,8 +67,7 @@ AFRAME.registerComponent('jukebox', {
      });
   }
 
-
-  
+ 
 let currentSongIndex = 0;
     
     
