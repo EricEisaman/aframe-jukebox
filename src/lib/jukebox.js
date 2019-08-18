@@ -72,7 +72,7 @@ let currentSongIndex = 0;
     
     
 function play(e){
-  const index = e.target?this.index:e
+  const index = (e.target!='undefined')?this.index:e
   console.log(e.target,this.index,e);
   currentSongIndex = index;    
   bgmUI.components.sound__clickclick.playSound();
