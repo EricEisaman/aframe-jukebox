@@ -74,6 +74,7 @@ let currentSongIndex = 0;
     
 function play(e){
   const index = e.target?this.index:e
+  console.log(e.target,this.index,e);
   currentSongIndex = index;    
   bgmUI.components.sound__clickclick.playSound();
   if(nowPlaying.innerText == (bgm.songNames[index]).replace('\n','')){
