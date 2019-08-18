@@ -73,6 +73,7 @@ let currentSongIndex = 0;
 window.CS1.jukebox = {
     audio: audio,
     tracks: tracks,
+    songNames: bgm.songNames,
     play: (trackIndex=false,local=true)=>{
       if(trackIndex || trackIndex===0){
         //console.log(`Playing track index: ${trackIndex}.`);
