@@ -78,7 +78,7 @@ let currentSongIndex = 0;
     
     
 window.CS1.jukebox.play = function(e){
-  const index = (e.target!='undefined')?this.index:e
+  const index = (typeof e == 'number')?e:this.index;
   console.log(e.target,this.index,e);
   currentSongIndex = index;    
   bgmUI.components.sound__clickclick.playSound();
