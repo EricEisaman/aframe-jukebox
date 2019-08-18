@@ -79,8 +79,7 @@ let currentSongIndex = 0;
     
 window.CS1.jukebox.play = function(e){
   const index = (typeof e == 'number')?e:this.index;
-  console.log(e.target,this.index,e);
-  currentSongIndex = index;    
+  console.log(e,this.index);   
   bgmUI.components.sound__clickclick.playSound();
   if(currentSongIndex==index && heading.innerText=='Now Playing'){
     window.CS1.jukebox.pause(true);
@@ -97,7 +96,8 @@ window.CS1.jukebox.play = function(e){
     }  
     heading.innerText = 'Now Playing';
     nowPlaying.innerText = window.CS1.jukebox.songNames[index];  
-  }   
+  } 
+  currentSongIndex = index; 
   audio.src = bgmUrlStart + tracks[index] + bgmUrlEnd;
   audio.crossorigin = 'anonymous';
   audio.load();
