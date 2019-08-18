@@ -78,15 +78,14 @@ let currentSongIndex = 0;
     
     
 window.CS1.jukebox.play = function(e){
-  const index = (typeof e == 'number')?e:this.index;
-  console.log(e,this.index);   
+  const index = (typeof e == 'number')?e:this.index;  
   bgmUI.components.sound__clickclick.playSound();
   if(currentSongIndex==index && heading.innerText=='Now Playing'){
     window.CS1.jukebox.pause(true);
     return;
   }else{
     if(typeof e != 'number'){
-      console.log('jukeboxplay event');
+      //console.log('jukeboxplay event');
       const jukeboxplayEvent = new CustomEvent('jukeboxplay', { 
         detail: {
           index: index
@@ -116,7 +115,7 @@ window.CS1.jukebox.pause = function (local){
   heading.innerText = 'Choose a Track';
   nowPlaying.innerText = '';
   if(local){
-    console.log('jukeboxpause event');
+    //console.log('jukeboxpause event');
     const jukeboxpauseEvent = new Event('jukeboxpause');
     audio.dispatchEvent(jukeboxpauseEvent);  
   }  
