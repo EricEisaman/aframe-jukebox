@@ -32,6 +32,7 @@ ____
 **Events API**
 
 Attach listeners to **CS1.jukebox.audio**.
+
 |Event Name|event.detail| 
 |----|----|
 |jukeboxplay|{index:index}|
