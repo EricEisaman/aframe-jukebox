@@ -80,18 +80,18 @@ function play(e){
     pause(true);
     return;
   }else{
+    if(e.target){
+      console.log('emitting jukeboxplay event');
+      const jukeboxplayEvent = new CustomEvent('jukeboxplay', { 
+        detail: {
+          index: index
+        } 
+      });
+      audio.dispatchEvent(jukeboxplayEvent);
+    }  
     heading.innerText = 'Now Playing';
     nowPlaying.innerText = bgm.songNames[index];  
-  } 
-  if(e.target){
-    console.log('emitting jukeboxplay event');
-    const jukeboxplayEvent = new CustomEvent('jukeboxplay', { 
-      detail: {
-        index: index
-      } 
-    });
-    audio.dispatchEvent(jukeboxplayEvent);
-  }    
+  }   
   audio.src = bgmUrlStart + tracks[index] + bgmUrlEnd;
   audio.crossorigin = 'anonymous';
   audio.load();
