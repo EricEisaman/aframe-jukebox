@@ -201,15 +201,15 @@ AFRAME.registerPrimitive('a-jukebox', {
     jukebox:{},
     position:{}
   },
-
-  // Maps HTML attributes to component properties.
   mappings: {
     songs: 'jukebox.songNames',
     tracks: 'jukebox.trackNums',
     logo: 'jukebox.logo',
     color: 'jukebox.color',
     playthrough: 'jukebox.playthrough',
-    initialdelay: 'jukebox.initialdelay'
+    initialdelay: 'jukebox.initialdelay',
+    autoplay: 'jukebox.autoplay',
+    volume: 'jukebox.volume'
   }
 });  
   
