@@ -83,7 +83,7 @@ window.CS1.jukebox.play = function(e){
   currentSongIndex = index;    
   bgmUI.components.sound__clickclick.playSound();
   if(nowPlaying.innerText == (window.CS1.jukebox.songNames[index]).replace('\n','')){
-    pause(true);
+    window.CS1.jukebox.pause(true);
     return;
   }else{
     if(e.target){
