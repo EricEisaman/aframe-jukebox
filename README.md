@@ -2,8 +2,12 @@
 
 # A-Frame Jukebox
 ____
+**Description**
 
-**API**
+A-Frame Jukebox provides a single declarative custom HTML tag approach creating a simple VR UI controlling a playlist of audio tracks. Clicking on the currently playing track stops the audio.
+____
+
+**HTML Element Attributes API**
 
 |Property|Type|Description|Default Value| 
 |---|---|---|---|
@@ -15,7 +19,7 @@ ____
 |initialdelay|number|milliseconds before start|5000|
 |autoplay|boolean|autoplay setting|false|
 
-___
+
 
 **Important Notes**
 
@@ -23,6 +27,16 @@ ___
 ```diff
 - The custom color theme property has not yet been implemented.
 ```
+____
+
+**Events API**
+
+Attach listeners to **CS1.jukebox.audio**.
+|Event Name|event.detail| 
+|----|----|
+|jukeboxplay|{index:index}|
+|jukeboxpause|undefined|
+
 
 ## Add the A-Frame Jukebox script in the HTML head:
 ```
