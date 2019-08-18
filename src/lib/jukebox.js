@@ -74,11 +74,15 @@ let currentSongIndex = 0;
     
 function play(e){
   const index = e.target?this.index:e
-  audio.src = bgmUrlStart + tracks[index] + bgmUrlEnd;
-  audio.crossorigin = 'anonymous';
-  audio.load();
-  audio.loop = !bgm.playThrough;
-  currentSongIndex = index;
+  currentSongIndex = index;    
+  bgmUI.components.sound__clickclick.playSound();
+  if(nowPlaying.innerText == (bgm.songNames[index]).replace('\n','')){
+    pause(true);
+    return;
+  }else{
+    heading.innerText = 'Now Playing';
+    nowPlaying.innerText = bgm.songNames[index];  
+  } 
   if(e.target){
     console.log('emitting jukeboxplay event');
     const jukeboxplayEvent = new CustomEvent('jukeboxplay', { 
@@ -87,15 +91,11 @@ function play(e){
       } 
     });
     audio.dispatchEvent(jukeboxplayEvent);
-  }        
-  bgmUI.components.sound__clickclick.playSound();
-  if(nowPlaying.innerText == (bgm.songNames[index]).replace('\n','')){
-    pause(true);
-    return;
-  }else{
-    heading.innerText = 'Now Playing';
-    nowPlaying.innerText = bgm.songNames[index];  
-  }              
+  }    
+  audio.src = bgmUrlStart + tracks[index] + bgmUrlEnd;
+  audio.crossorigin = 'anonymous';
+  audio.load();
+  audio.loop = !bgm.playThrough;
   audio.volume = bgm.volume;
   audio.play()
   .catch(err=>{
