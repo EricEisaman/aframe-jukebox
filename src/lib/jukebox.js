@@ -74,14 +74,14 @@ window.CS1.jukebox = {
     audio: audio,
     tracks: tracks,
     songNames: bgm.songNames,
-    play: (trackIndex=false,local=true)=>{
+    play: (trackIndex=false,emitevent)=>{
       if(trackIndex || trackIndex===0){
         //console.log(`Playing track index: ${trackIndex}.`);
         audio.src = bgmUrlStart + tracks[trackIndex] + bgmUrlEnd;
         audio.crossorigin = 'anonymous';
         audio.load();
         currentSongIndex = trackIndex;
-        if(local){
+        if(emitevent){
           console.log('emitting jukeboxplay event');
           const jukeboxplayEvent = new CustomEvent('jukeboxplay', { 
             detail: {
@@ -95,7 +95,7 @@ window.CS1.jukebox = {
       audio.volume = bgm.volume;
       audio.play();
     },
-    pause: (local=true)=>{
+    pause: (local)=>{
       audio.pause();
       if(local){
         console.log('emitting jukeboxpause event');
@@ -154,11 +154,11 @@ bgm.songs.forEach(  (song,index)=>{
     //console.log(`Play ${bgm.songNames[index]}.`);
     bgmUI.components.sound__clickclick.playSound();
     if(nowPlaying.innerText == (bgm.songNames[index]).replace('\n','')){
-      window.CS1.jukebox.pause();
+      window.CS1.jukebox.pause(true);
        heading.innerText = 'Choose a Track';
       nowPlaying.innerText = '';
     }else{
-      window.CS1.jukebox.play(index);
+      window.CS1.jukebox.play(index,true);
       heading.innerText = 'Now Playing';
       nowPlaying.innerText = bgm.songNames[index];  
     } 
