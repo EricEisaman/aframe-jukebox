@@ -82,11 +82,11 @@ window.CS1.jukebox.play = function(e){
   console.log(e.target,this.index,e);
   currentSongIndex = index;    
   bgmUI.components.sound__clickclick.playSound();
-  if(currentSongIndex==index && heading.innerText=='Now Playing'){
+  if(nowPlaying.innerText == (window.CS1.jukebox.songNames[index]).replace('\n','')){
     window.CS1.jukebox.pause(true);
     return;
   }else{
-    if(typeof e != 'number'){
+    if(e.target){
       console.log('jukeboxplay event');
       const jukeboxplayEvent = new CustomEvent('jukeboxplay', { 
         detail: {
