@@ -66,17 +66,23 @@ AFRAME.registerComponent('jukebox', {
       window.CS1.jukebox.playNext();
      });
   }
+    
+window.CS1.jukebox = {
+    audio: audio,
+    tracks: tracks,
+    songNames: bgm.songNames
+  }//end of CS1.jukebox definition
 
  
 let currentSongIndex = 0;
     
     
-function play(e){
+window.CS1.jukebox.play = function(e){
   const index = (e.target!='undefined')?this.index:e
   console.log(e.target,this.index,e);
   currentSongIndex = index;    
   bgmUI.components.sound__clickclick.playSound();
-  if(nowPlaying.innerText == (CS1.jukebox.songNames[index]).replace('\n','')){
+  if(nowPlaying.innerText == (window.CS1.jukebox.songNames[index]).replace('\n','')){
     pause(true);
     return;
   }else{
@@ -90,7 +96,7 @@ function play(e){
       audio.dispatchEvent(jukeboxplayEvent);
     }  
     heading.innerText = 'Now Playing';
-    nowPlaying.innerText = CS1.jukebox.songNames[index];  
+    nowPlaying.innerText = window.CS1.jukebox.songNames[index];  
   }   
   audio.src = bgmUrlStart + tracks[index] + bgmUrlEnd;
   audio.crossorigin = 'anonymous';
@@ -105,7 +111,7 @@ function play(e){
     
     
     
-function pause (local){
+window.CS1.jukebox.pause = function (local){
   audio.pause();
   heading.innerText = 'Choose a Track';
   nowPlaying.innerText = '';
@@ -117,7 +123,7 @@ function pause (local){
 }  
     
     
-function playNext(){
+window.CS1.jukebox.playNext = function(){
   currentSongIndex++;
   if(currentSongIndex == tracks.length) currentSongIndex = 0;
   audio.src = bgmUrlStart + tracks[currentSongIndex] + bgmUrlEnd;
@@ -128,22 +134,12 @@ function playNext(){
   nowPlaying.innerText = bgm.songNames[currentSongIndex];
 }
     
-    
-  
-window.CS1.jukebox = {
-    audio: audio,
-    tracks: tracks,
-    songNames: bgm.songNames,
-    play:play,
-    pause:pause,
-    playNext: playNext  
-  }//end of CS1.jukebox definition
-    
+        
   
 if(this.data.autoplay)setTimeout(function(){window.CS1.jukebox.play();},bgm.initialDelay);
 
 
-// BGM PLAYER UI
+// Jukebox UI
 const bgmUI = layout.ui;
 bgmUI.setAttribute('sound__hoverclick','src:url(https://cdn.glitch.com/36918312-2de3-4283-951d-240b263949f7%2Fclick.mp3?v=1561929149589);volume:0.2;poolSize:10');
 bgmUI.setAttribute('sound__clickclick','src:url(https://cdn.glitch.com/98086d61-d948-4a3b-9b36-c3aed0e4a121%2Fclick.mp3?v=1565959171546);volume:0.8;poolSize:10');
@@ -171,7 +167,7 @@ bgm.songs.forEach(  (song,index)=>{
   const songItem = document.createElement('div');
   songItem.innerText = bgm.songNames[index];
   songItem.setAttribute('style','color:#FFF;font-size:12px');
-  songItem.addEventListener('click',play.bind({index:index}));
+  songItem.addEventListener('click',window.CS1.jukebox.play.bind({index:index}));
   songItem.addEventListener('mouseenter',e=>{
     bgmUI.components.sound__hoverclick.playSound();
     songItem.setAttribute('style','color:#FFF;background-color:#32BA6F;font-size:14px');
