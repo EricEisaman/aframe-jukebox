@@ -76,7 +76,7 @@ function play(e){
   console.log(e.target,this.index,e);
   currentSongIndex = index;    
   bgmUI.components.sound__clickclick.playSound();
-  if(nowPlaying.innerText == (bgm.songNames[index]).replace('\n','')){
+  if(nowPlaying.innerText == (CS1.jukebox.songNames[index]).replace('\n','')){
     pause(true);
     return;
   }else{
@@ -90,7 +90,7 @@ function play(e){
       audio.dispatchEvent(jukeboxplayEvent);
     }  
     heading.innerText = 'Now Playing';
-    nowPlaying.innerText = bgm.songNames[index];  
+    nowPlaying.innerText = CS1.jukebox.songNames[index];  
   }   
   audio.src = bgmUrlStart + tracks[index] + bgmUrlEnd;
   audio.crossorigin = 'anonymous';
