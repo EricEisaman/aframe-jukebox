@@ -81,7 +81,7 @@ function play(e){
     return;
   }else{
     if(e.target){
-      console.log('emitting jukeboxplay event');
+      console.log('jukeboxplay event');
       const jukeboxplayEvent = new CustomEvent('jukeboxplay', { 
         detail: {
           index: index
@@ -110,7 +110,7 @@ function pause (local){
   heading.innerText = 'Choose a Track';
   nowPlaying.innerText = '';
   if(local){
-    console.log('emitting jukeboxpause event');
+    console.log('jukeboxpause event');
     const jukeboxpauseEvent = new Event('jukeboxpause');
     audio.dispatchEvent(jukeboxpauseEvent);  
   }  
