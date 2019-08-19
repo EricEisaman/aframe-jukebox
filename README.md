@@ -38,6 +38,20 @@ Attach listeners to **CS1.jukebox.audio**.
 |jukeboxplay|{index:index}|
 |jukeboxpause|undefined|
 
+___
+
+
+**CS1.jukebox Object API**
+
+- CS1.jukebox.audio
+- CS1.jukebox.pause
+- CS1.jukebox.play
+- CS1.jukebox.playNext
+- CS1.jukebox.songNames
+- CS1.jukebox.tracks
+
+___
+
 
 ## Add the A-Frame Jukebox script in the HTML head:
 ```
@@ -64,7 +78,7 @@ Attach listeners to **CS1.jukebox.audio**.
 ## Add a custom jukebox to your scene:
 ```
 <a-jukebox 
-songs=" 'Love Theme from\nthe Godfather' , 'Cannon in D\nby Bach'   "
+songs=" [ 'Love Theme from\nthe Godfather' , 'Cannon in D\nby Bach'] "
 tracks='14837098 , 4595620'
 position="0 1.7 -1.5"></a-jukebox>        
         
