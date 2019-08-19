@@ -135,7 +135,7 @@ window.CS1.jukebox.playNext = function(){
     
   
 const autoplay = e=>{
-  setTimeout(_=>{window.CS1.jukebox.play(1);},bgm.initialDelay);
+  setTimeout(_=>{window.CS1.jukebox.play(0);},bgm.initialDelay);
   document.body.removeEventListener(e.type,autoplay);
   console.log(`Playing Jukebox on ${e.type} event.`);
 }    
