@@ -55,7 +55,7 @@ ___
 
 ## Add the A-Frame Jukebox script in the HTML head:
 ```
-<script src="https://cdn.jsdelivr.net/gh/EricEisaman/aframe-jukebox@0.1.10/dist/aframe-jukebox.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/gh/EricEisaman/aframe-jukebox@v0.1.10/dist/aframe-jukebox.min.js" ></script>
 
 ```
 
