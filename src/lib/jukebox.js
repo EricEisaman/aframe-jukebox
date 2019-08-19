@@ -133,16 +133,16 @@ window.CS1.jukebox.playNext = function(){
   nowPlaying.innerText = bgm.songNames[currentSongIndex];
 }
     
-        
+  
+const autoplay = e=>{
+  setTimeout(_=>{window.CS1.jukebox.play(1);},bgm.initialDelay);
+  document.body.removeEventListener(e.type,autoplay);
+  console.log(`Playing Jukebox on ${e.type} event.`);
+}    
  
-if(this.data.autoplay  && CS1.bgm.tracks.length){
-  if(CS1.game){
-    document.addEventListener('gameStart',e=>{
-      setTimeout(function(){window.CS1.jukebox.playTrackIndex(0);},bgm.initialDelay); 
-    })  
-  }else{
-      setTimeout(function(){window.CS1.jukebox.playTrackIndex(0);},bgm.initialDelay); 
-  } 
+if(this.data.autoplay  && CS1.jukebox.tracks.length){
+  let type = CS1.game?'gameStart':'click';
+  document.body.addEventListener(type,autoplay);
 } 
 
 
@@ -161,13 +161,8 @@ layout.logo.style.marginTop = '-30px';
 
 const nowPlaying = layout.current;
 const heading = layout.heading;
-if(this.data.autoplay){
-  heading.innerText = 'Now Playing';
-  nowPlaying.innerText = this.data.songNames[0];
-}else{
-  heading.innerText = 'Choose a Track';
-  nowPlaying.innerText = '';
-} 
+heading.innerText = 'Choose a Track';
+nowPlaying.innerText = '';
 
 const playlist = document.createElement('div');
 playlist.setAttribute('style','text-align:center;margin-left:0.0em;margin-top:1.0em');
