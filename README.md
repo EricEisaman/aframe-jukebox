@@ -44,11 +44,24 @@ ___
 **CS1.jukebox Object API**
 
 - CS1.jukebox.audio
-- CS1.jukebox.pause
-- CS1.jukebox.play
-- CS1.jukebox.playNext
+```
+//exposes the underlying audio element 
+
+const jukeboxStream = AFRAME.bgm.audio.captureStream();
+
+/*
+jukeboxStream can then be run through an AnalyserNode, 
+from where you can pull intensities for various frequency 
+bands and use those values to animate colors, scales, and positions.
+*/
+```
+- CS1.jukebox.pause()
+- CS1.jukebox.play(trackIndex)
+- CS1.jukebox.playNext()
 - CS1.jukebox.songNames
+  - an array of song names
 - CS1.jukebox.tracks
+  - an array of track numbers
 
 ___
 
