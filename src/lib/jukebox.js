@@ -19,7 +19,7 @@ AFRAME.registerComponent('jukebox', {
     logo: {default: 'https://cdn.glitch.com/b88fe5ca-4161-4b19-865e-cfabdd398fa7%2Faj_logo.png?v=1565976468386'},
     color: {default: '#3AC4D1'},
     playthrough: {default: true},
-    initialdelay: {default: 5000},
+    initialdelay: {default: 0},
     autoplay:{default:false},
     volume:{default:1.0}
   },
@@ -39,9 +39,9 @@ AFRAME.registerComponent('jukebox', {
   let audio = document.createElement('audio');
   let bgmUrlStart = 'https://api.soundcloud.com/tracks/';
   let bgmUrlEnd = '/stream?client_id=b9d11449cd4c64d461b8b5c30650cd06';
-  audio.src = bgmUrlStart +tracks[0]+ bgmUrlEnd;
-  audio.crossorigin = 'anonymous';
-  audio.autoplay = this.data.autoplay ? 'autoplay':false;
+  // audio.src = bgmUrlStart +tracks[0]+ bgmUrlEnd;
+  // audio.crossorigin = 'anonymous';
+  // audio.autoplay = this.data.autoplay ? 'autoplay':false;
   audio.loop = !bgm.playThrough;
   audio.volume = this.data.volume;
   
@@ -134,8 +134,17 @@ window.CS1.jukebox.playNext = function(){
 }
     
         
-  
-if(this.data.autoplay)setTimeout(function(){window.CS1.jukebox.play();},bgm.initialDelay);
+ 
+if(this.data.autoplay  && CS1.bgm.tracks.length){
+  if(CS1.game){
+    document.addEventListener('gameStart',e=>{
+      setTimeout(function(){window.CS1.jukebox.playTrackIndex(0);},bgm.initialDelay); 
+    })  
+  }else{
+      setTimeout(function(){window.CS1.jukebox.playTrackIndex(0);},bgm.initialDelay); 
+  } 
+} 
+
 
 
 // Jukebox UI
