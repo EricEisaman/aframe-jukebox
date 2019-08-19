@@ -14,7 +14,7 @@ ____
 |songs|array|names of songs|" 'Don\'t You Worry Bout a Thing\nby Jacob Collier' , 'Fireflies by Owl City' , 'In the Name of Love\nby Martin Garrix' , 'Save Me\n by the Underground All Stars' , 'Riders on the Storm\nby the Doors' "|
 |tracks|array|track numbers of songs|'159735657 , 5988210 , 319594726 , 9645925 , 219569230'|
 |logo|string|logo|'https://cdn.glitch.com/b88fe5ca-4161-4b19-865e-cfabdd398fa7%2Faj_logo.png?v=1565976468386'|
-|color|string|closed rotation (for rotate type)|'#D3FFE7'|
+|color|string|set theme color (not yet implemented)|'#D3FFE7'|
 |playthrough|boolean|play through all tracks|true|
 |initialdelay|number|milliseconds before start|5000|
 |autoplay|boolean|autoplay setting|false|
