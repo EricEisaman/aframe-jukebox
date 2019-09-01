@@ -1,5 +1,5 @@
 {
-  "name": "A-Frame Jukebox",
+  "name": "AFrameJukebox",
   "version": "0.1.11",
   "description": "Bring music to VR!",
   "main": "server.js",
