@@ -15,12 +15,9 @@ export default {
 	`,
 	plugins: [
 		resolve({
-			module: true, // Default: true
-			jsnext: true,	// Default: false
-			main: true,	// Default: true
 			browser: true,
       		extensions: [ '.js' ],  // Default: ['.js']
 		}),
-    terser() // Code minification
+    //terser() // Code minification
 	]
 };

@@ -4,11 +4,13 @@
   "description": "Bring music to VR!",
   "main": "server.js",
   "scripts": {
-    "start": "rollup -c -i src/main.js -o .data/bundle.js; node server.js"
+    "start": "rollup -c -i src/main.js -o .data/bundle.js; node server.js",
+    "dist": "cp .data/bundle.js dist/aframe-jukebox.min.js; refresh",
+    "test": "cp .data/bundle.js dist/aframe-jukebox.js; refresh"
   },
   "dependencies": {
     "rollup": "^1.0.4",
-    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-node-resolve": "^5.0.0",
     "rollup-plugin-commonjs": "^8.2.4",
     "express": "^4.16.2",
     "terser": "^4.1.4",
