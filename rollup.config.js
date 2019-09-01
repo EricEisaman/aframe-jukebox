@@ -18,6 +18,6 @@ export default {
 			browser: true,
       		extensions: [ '.js' ],  // Default: ['.js']
 		}),
-    //terser() // Code minification
+    terser() // Code minification
 	]
 };

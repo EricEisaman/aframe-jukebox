@@ -99,13 +99,10 @@ window.CS1.jukebox.play = function(e){
   currentSongIndex = index; 
   audio.src = bgmUrlStart + tracks[index] + bgmUrlEnd;
   audio.crossorigin = 'anonymous';
+  audio.autoplay = true;
   audio.load();
   audio.loop = !bgm.playThrough;
-  audio.volume = bgm.volume;
-  audio.play()
-  .catch(err=>{
-      console.error(err);           
-  });  
+  audio.volume = bgm.volume; 
 }    
     
     
