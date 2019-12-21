@@ -10,14 +10,19 @@ export default (function () {
 
 AFRAME.registerComponent('jukebox', {
   schema: {
-	  songNames: { type:'array' , default: ['Don\'t You Worry Bout a Thing\nby Jacob Collier' , 
-                                          'Fireflies by Owl City' ,
-                                         'In the Name of Love\nby Martin Garrix' ,
-                                         'Save Me\n by the Underground All Stars' ,
-                                         'Riders on the Storm\nby the Doors']},
-    trackNums: { type:'array' , default: [159735657 , 5988210 , 319594726 , 9645925 , 219569230]},
+	  names: { type:'array' , default: ['Don\'t You Worry Bout a Thing</br>by</br>Jacob Collier' , 
+                                          'Fireflies</br>by</br>Owl City' ,
+                                         'One Life</br>by</br>Patrick Patrikios' ,
+                                         'Save Me</br>by</br>the Underground All Stars' ,
+                                         'Riders on the Storm</br>by</br>the Doors']},
+    src: { type:'array' , default: [159735657 , 5988210 , 'https://cdn.glitch.com/a4339379-3ed9-4b49-bced-16d8a59ee858%2FOne_Life.mp3?v=1576924357900' , 9645925 , 219569230]},
     logo: {default: 'https://cdn.glitch.com/b88fe5ca-4161-4b19-865e-cfabdd398fa7%2Faj_logo.png?v=1565976468386'},
-    color: {default: '#3AC4D1'},
+    color: {default: '#FFF'},
+    border: {default: '#D3FFE7'},
+    highlight: {default: '#32BA6F'},
+    current: {default: '#58E7F4'},
+    heading: {default: '#FFF'},
+    scaletext: {default: 1},
     playthrough: {default: true},
     initialdelay: {default: 0},
     autoplay:{default:false},
@@ -28,8 +33,8 @@ AFRAME.registerComponent('jukebox', {
     
     
  const bgm = {
-   "songs": this.data.trackNums,   // add your tracks in this array.
-   "songNames": this.data.songNames,
+   "songs": this.data.src,   // add your tracks in this array.
+   "songNames": this.data.names,
    "volume": this.data.volume,
    "playThrough": this.data.playthrough,  // true means loop through all tracks in array
    "initialDelay": this.data.initialdelay
@@ -39,9 +44,6 @@ AFRAME.registerComponent('jukebox', {
   let audio = document.createElement('audio');
   let bgmUrlStart = 'https://api.soundcloud.com/tracks/';
   let bgmUrlEnd = '/stream?client_id=b9d11449cd4c64d461b8b5c30650cd06';
-  // audio.src = bgmUrlStart +tracks[0]+ bgmUrlEnd;
-  // audio.crossorigin = 'anonymous';
-  // audio.autoplay = this.data.autoplay ? 'autoplay':false;
   audio.loop = !bgm.playThrough;
   audio.volume = this.data.volume;
   
@@ -94,10 +96,13 @@ window.CS1.jukebox.play = function(e){
       audio.dispatchEvent(jukeboxplayEvent);
     }  
     heading.innerText = 'Now Playing';
-    nowPlaying.innerText = window.CS1.jukebox.songNames[index];  
+    nowPlaying.innerHTML = window.CS1.jukebox.songNames[index];  
   } 
   currentSongIndex = index; 
-  audio.src = bgmUrlStart + tracks[index] + bgmUrlEnd;
+  if(typeof tracks[index] ==='Number')
+    audio.src = bgmUrlStart + tracks[index] + bgmUrlEnd;
+  else
+    audio.src = tracks[index];
   audio.crossorigin = 'anonymous';
   audio.autoplay = true;
   audio.load();
@@ -122,12 +127,15 @@ window.CS1.jukebox.pause = function (local){
 window.CS1.jukebox.playNext = function(){
   currentSongIndex++;
   if(currentSongIndex == tracks.length) currentSongIndex = 0;
-  audio.src = bgmUrlStart + tracks[currentSongIndex] + bgmUrlEnd;
+  if(typeof tracks[currentSongIndex] ==='Number')
+    audio.src = bgmUrlStart + tracks[currentSongIndex] + bgmUrlEnd;
+  else
+    audio.src = tracks[currentSongIndex];
   audio.crossorigin = 'anonymous';
   audio.load();
   audio.loop = !bgm.playThrough;
   audio.play(currentSongIndex);
-  nowPlaying.innerText = bgm.songNames[currentSongIndex];
+  nowPlaying.innerHTML = bgm.songNames[currentSongIndex];
 }
     
   
@@ -150,6 +158,7 @@ bgmUI.setAttribute('sound__hoverclick','src:url(https://cdn.glitch.com/36918312-
 bgmUI.setAttribute('sound__clickclick','src:url(https://cdn.glitch.com/98086d61-d948-4a3b-9b36-c3aed0e4a121%2Fclick.mp3?v=1565959171546);volume:0.8;poolSize:10');
 
 const bgmPlayer = layout.player;
+layout.player.style.borderColor = this.data.border;
 layout.logo.src = this.data.logo;
 layout.logo.style.width = '25%';
 layout.logo.style.margin = '10px auto 0px';
@@ -157,7 +166,11 @@ layout.logo.style.marginTop = '-30px';
 
 
 const nowPlaying = layout.current;
+nowPlaying.style.color = this.data.current;
+nowPlaying.style.fontSize = `${this.data.scaletext*12}px`;
 const heading = layout.heading;
+heading.style.color = this.data.heading;
+heading.style.fontSize = `${this.data.scaletext*14}px`;
 heading.innerText = 'Choose a Track';
 nowPlaying.innerText = '';
 
@@ -165,15 +178,15 @@ const playlist = document.createElement('div');
 playlist.setAttribute('style','text-align:center;margin-left:0.0em;margin-top:1.0em');
 bgm.songs.forEach(  (song,index)=>{
   const songItem = document.createElement('div');
-  songItem.innerText = bgm.songNames[index];
-  songItem.setAttribute('style','color:#FFF;font-size:12px');
+  songItem.innerHTML = bgm.songNames[index];
+  songItem.setAttribute('style',`color:${this.data.color};font-size:${this.data.scaletext*12}px`);
   songItem.addEventListener('click',window.CS1.jukebox.play.bind({index:index}));
   songItem.addEventListener('mouseenter',e=>{
     bgmUI.components.sound__hoverclick.playSound();
-    songItem.setAttribute('style','color:#FFF;background-color:#32BA6F;font-size:14px');
+    songItem.setAttribute('style',`color:${this.data.color};background-color:${this.data.highlight};font-size:${this.data.scaletext*14}px`);
   });
   songItem.addEventListener('mouseleave',e=>{
-    songItem.setAttribute('style','color:#FFF;font-size:12px');
+    songItem.setAttribute('style',`color:${this.data.color};font-size:${this.data.scaletext*12}px`);
   });
   playlist.appendChild(songItem);
 });
@@ -198,10 +211,15 @@ AFRAME.registerPrimitive('a-jukebox', {
     position:{}
   },
   mappings: {
-    songs: 'jukebox.songNames',
-    tracks: 'jukebox.trackNums',
+    names: 'jukebox.names',
+    src: 'jukebox.src',
     logo: 'jukebox.logo',
     color: 'jukebox.color',
+    highlight:'jukebox.highlight',
+    current: 'jukebox.current',
+    heading: 'jukebox.heading',
+    border: 'jukebox.border',
+    scaletext: 'jukebox.scaletext',
     playthrough: 'jukebox.playthrough',
     initialdelay: 'jukebox.initialdelay',
     autoplay: 'jukebox.autoplay',

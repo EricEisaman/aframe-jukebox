@@ -1,6 +1,7 @@
 ![A-Frame Jukebox](https://cdn.glitch.com/b88fe5ca-4161-4b19-865e-cfabdd398fa7%2Fa-jukebox.gif?v=1565990879454)
 
 # A-Frame Jukebox
+v0.1.15
 ____
 **Description**
 
@@ -11,22 +12,20 @@ ____
 
 |Property|Type|Description|Default Value| 
 |---|---|---|---|
-|songs|array|names of songs|" 'Don\'t You Worry Bout a Thing\nby Jacob Collier' , 'Fireflies by Owl City' , 'In the Name of Love\nby Martin Garrix' , 'Save Me\n by the Underground All Stars' , 'Riders on the Storm\nby the Doors' "|
-|tracks|array|track numbers of songs|'159735657 , 5988210 , 319594726 , 9645925 , 219569230'|
+|names|array|names of songs|" Don\'t You Worry Bout a Thing</br>by</br>Jacob Collier , Fireflies</br>by</br>Owl City  , One Life</br>by</br>Patrik Patrikios , Save Me</br>by</br>the Underground All Stars , Riders on the Storm</br>by</br>the Doors "|
+|src|array|track numbers or urls of songs|159735657 , 5988210 , 'https://cdn.glitch.com/a4339379-3ed9-4b49-bced-16d8a59ee858%2FOne_Life.mp3?v=1576924357900' , 9645925 , 219569230|
 |logo|string|logo|'https://cdn.glitch.com/b88fe5ca-4161-4b19-865e-cfabdd398fa7%2Faj_logo.png?v=1565976468386'|
-|color|string|set theme color (not yet implemented)|'#D3FFE7'|
+|color|string|playlist font color|'#D3FFE7'|
+|highlight|string|playlist highlight color|'#D3FFE7'|
+|border|string|border color|'#D3FFE7'|
+|current|string|current song font color|'#58E7F4'|
+|heading|string|heading font color|'#FFF'|
+|scaletext|number|scale factor for text|'1.0'|
 |playthrough|boolean|play through all tracks|true|
 |initialdelay|number|milliseconds before start|5000|
 |autoplay|boolean|autoplay setting|false|
 
 
-
-**Important Notes**
-
-**Note:**
-```diff
-- The custom color theme property has not yet been implemented.
-```
 ____
 
 **Events API**
@@ -68,7 +67,7 @@ ___
 
 ## Add the A-Frame Jukebox script in the HTML head:
 ```
-<script src="https://cdn.jsdelivr.net/gh/EricEisaman/aframe-jukebox@v0.1.14/dist/aframe-jukebox.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/gh/EricEisaman/aframe-jukebox@v0.1.15/dist/aframe-jukebox.min.js" ></script>
 
 ```
 
@@ -91,8 +90,8 @@ ___
 ## Add a custom jukebox to your scene:
 ```
 <a-jukebox 
-songs=" [ 'Love Theme from\nthe Godfather' , 'Cannon in D\nby Bach'] "
-tracks='14837098 , 4595620'
+names=" [ 'Love Theme from\nthe Godfather' , 'Cannon in D\nby Bach'] "
+src='14837098 , 4595620'
 position="0 1.7 -1.5"></a-jukebox>        
         
 <a-entity id="rig" position="0 0 0">

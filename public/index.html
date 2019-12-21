@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
     <link rel="stylesheet" href="/style.css">
 <!--     <script src="https://cdn.jsdelivr.net/gh/EricEisaman/aframe-jukebox/dist/aframe-jukebox.min.js" ></script> -->
-    <script src="aframe-jukebox.min.js" ></script>
+    <script src="aframe-jukebox.js" ></script>
   </head>  
   <body>
       <a-scene>
@@ -18,7 +18,17 @@
      
         
     
-      <a-jukebox position="0 1.7 -1.5" autoplay="true"></a-jukebox>        
+      <a-jukebox position="0 1.7 -1.5" 
+                 color="red"
+                 logo="https://cdn.glitch.com/a4339379-3ed9-4b49-bced-16d8a59ee858%2Fheart_256.png?v=1576890422254"
+                 border="#F9C5C5"
+                 highlight="#b2b51e"
+                 current="#b3dffc"
+                 heading="#ceb733"
+                 scaletext="1.4"
+                 src="https://cdn.glitch.com/a4339379-3ed9-4b49-bced-16d8a59ee858%2FFirefly.mp3?v=1576924631204,https://cdn.glitch.com/a4339379-3ed9-4b49-bced-16d8a59ee858%2FOne_Life.mp3?v=1576924357900,https://cdn.glitch.com/a4339379-3ed9-4b49-bced-16d8a59ee858%2FA_to_the_O.mp3?v=1576926372252"
+                 names="Firefly</br>by</br>Quincas Moreira,One Life</br>by</br>Patrick Patrikios,A to the O</br>by</br>Diamond Ortiz"
+                 autoplay="true"></a-jukebox>        
         
       <a-entity id="rig" position="0 0 0">
         <a-camera id="camera" look-controls="pointerLockEnabled: true;" >

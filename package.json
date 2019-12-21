@@ -1,6 +1,6 @@
 {
   "name": "AFrameJukebox",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "Bring music to VR!",
   "main": "server.js",
   "scripts": {
