@@ -99,7 +99,7 @@ window.CS1.jukebox.play = function(e){
     nowPlaying.innerHTML = window.CS1.jukebox.songNames[index];  
   } 
   currentSongIndex = index; 
-  if(typeof tracks[index] ==='Number')
+  if( Number(tracks[index]) )
     audio.src = bgmUrlStart + tracks[index] + bgmUrlEnd;
   else
     audio.src = tracks[index];
@@ -127,7 +127,7 @@ window.CS1.jukebox.pause = function (local){
 window.CS1.jukebox.playNext = function(){
   currentSongIndex++;
   if(currentSongIndex == tracks.length) currentSongIndex = 0;
-  if(typeof tracks[currentSongIndex] ==='Number')
+  if( Number(tracks[currentSongIndex]) )
     audio.src = bgmUrlStart + tracks[currentSongIndex] + bgmUrlEnd;
   else
     audio.src = tracks[currentSongIndex];
